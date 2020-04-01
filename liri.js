@@ -1,7 +1,6 @@
 require("dotenv").config()
 var axios = require(`axios`)
 var chalk = require('chalk')
-var request = require(`request`)
 var Spotify = require(`node-spotify-api`)
 var fs = require('fs')
 
@@ -92,10 +91,10 @@ function concertSearch() {
     queryURL = "https://rest.bandsintown.com/artists/" + artist + "/events?app_id=codingbootcamp"
 
     axios.get((queryURL))
-    
-    .then(function (response) {
 
- 
+        .then(function (response) {
+
+
 
             // console.log("artist", response)
 
@@ -105,46 +104,105 @@ function concertSearch() {
 
             console.log(chalk.blue("\n******************" + "\n" + "\nVenue is:" + venue + "\n" + "\nLocation is:" + location + "\n" + "\nDate:" + dates + "\n" + "\n***************"))
 
-        
-    })
-    }
+
+        })
+}
 
 function movieSearch() {
 
     var movie = arg.replace(",", "+")
 
-    var queryURL = "http://www.omdbapi.com/?apikey=trilogy&t=" + movie ;
-    
+    var queryURL = "http://www.omdbapi.com/?apikey=trilogy&t=" + movie;
+
     axios.get((queryURL))
 
-    .then(function(response) {
+        .then(function (response) {
 
-        console.log(response.data)
+            console.log(response.data)
 
-        var title = response.data.Title 
-        console.log(title)
-        var year = response.data.Year
-        console.log(year)
-        var imbdRating = response.data.Ratings[0].value
-        var rotten = response.data.Ratings[1].value
-        var country = response.data.Country
-        var language = response.data.Language
-        var plot = response.data.Plot
-        var actors = response.data.Actors
+            var title = response.data.Title
+            console.log(title)
+            var year = response.data.Year
+            console.log(year)
+            var imbdRating = response.data.Ratings[0].value
+            var rotten = response.data.Ratings[1].value
+            var country = response.data.Country
+            var language = response.data.Language
+            var plot = response.data.Plot
+            var actors = response.data.Actors
 
-        console.log(chalk.inverse("\n******************" + "\n" + "\nMovie is:" + title + "\n" + "\nYear released:" + year + "\n" + "\nIMBD Rating:" + imbdRating + "\n" + "\nRotten Tomatoes Rating is:" + rotten + "\n" + "\nCountry of Origin:" + country + "\n" + "\nLanguage:" + language + "\n" + "\nPLot:" + plot + "\n" + "\nActors are:" + actors + "\n" + "\n***************"))
-
-
+            console.log(chalk.inverse("\n******************" + "\n" + "\nMovie is:" + title + "\n" + "\nYear released:" + year + "\n" + "\nIMBD Rating:" + imbdRating + "\n" + "\nRotten Tomatoes Rating is:" + rotten + "\n" + "\nCountry of Origin:" + country + "\n" + "\nLanguage:" + language + "\n" + "\nPLot:" + plot + "\n" + "\nActors are:" + actors + "\n" + "\n***************"))
 
 
-    })
+
+
+        })
 
 
 
 
 }
 
-function randomSearch() {}
+function randomSearch() {
+
+    fs.readFile("random.txt" , "utf8" , function (err, data) {
+
+
+        if (err) {
+
+            console.log(chalk.red(err, "ERROR"))
+
+
+
+        }
+
+        var contents = data.split(",")
+
+
+        console.log("an array" , contents)
+
+       let [command , arg] = contents 
+
+       console.log(command, "command")
+       console.log(arg , "arg7")
+
+        switch (command) {
+
+            case `concert-this`:
+                concertSearch()
+        
+                break;
+        
+            case "spotify-this":
+        
+                spotSearch()
+        
+                break;
+        
+            case `movie-this`:
+        
+                movieSearch()
+        
+                break;
+        
+            case `do-what-it-says`:
+        
+                randomSearch()
+        
+                break;
+        
+        
+        
+        }
+        
+
+
+
+    })
+
+
+
+}
 
 switch (command) {
 
