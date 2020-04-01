@@ -19,8 +19,13 @@
   "homepage": "https://github.com/jvanhook13/Liri_Bot#readme",
   "dependencies": {
     "axios": "^0.19.2",
+    "bandsintown": "^1.0.1",
+    "chalk": "^3.0.0",
     "dotenv": "^8.2.0",
+    "http": "0.0.1-security",
+    "https": "^1.0.0",
     "inquirer": "^7.1.0",
-    "node-spotify-api": "^1.1.1"
+    "node-spotify-api": "^1.1.1",
+    "request": "^2.88.2"
   }
 }
