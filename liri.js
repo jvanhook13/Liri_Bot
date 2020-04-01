@@ -85,7 +85,7 @@ function concertSearch() {
 
     if (arg === "") {
 
-        console.log("PLease enter a band name")
+        console.log(chalk.red("Please enter a band name"))
 
     }
 
@@ -95,9 +95,9 @@ function concertSearch() {
     
     .then(function (response) {
 
-            // queryURL = "https://rest.bandsintown.com/artists/" + artist + "/events?app_id=codingbootcamp"
+ 
 
-            console.log("artist", response)
+            // console.log("artist", response)
 
             var venue = response.data[0].venue.name
             var location = response.data[0].venue.city
@@ -109,7 +109,40 @@ function concertSearch() {
     })
     }
 
-function movieSearch() {}
+function movieSearch() {
+
+    var movie = arg.replace(",", "+")
+
+    var queryURL = "http://www.omdbapi.com/?apikey=trilogy&t=" + movie ;
+    
+    axios.get((queryURL))
+
+    .then(function(response) {
+
+        console.log(response.data)
+
+        var title = response.data.Title 
+        console.log(title)
+        var year = response.data.Year
+        console.log(year)
+        var imbdRating = response.data.Ratings[0].value
+        var rotten = response.data.Ratings[1].value
+        var country = response.data.Country
+        var language = response.data.Language
+        var plot = response.data.Plot
+        var actors = response.data.Actors
+
+        console.log(chalk.inverse("\n******************" + "\n" + "\nMovie is:" + title + "\n" + "\nYear released:" + year + "\n" + "\nIMBD Rating:" + imbdRating + "\n" + "\nRotten Tomatoes Rating is:" + rotten + "\n" + "\nCountry of Origin:" + country + "\n" + "\nLanguage:" + language + "\n" + "\nPLot:" + plot + "\n" + "\nActors are:" + actors + "\n" + "\n***************"))
+
+
+
+
+    })
+
+
+
+
+}
 
 function randomSearch() {}
 
