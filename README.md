@@ -5,11 +5,11 @@ Reads terminal inputs and returns results from the web
 
 ## What can I search?
 * You can search Spotify by using command `spotify-this` followed by the song name. EXAMPLE(`node liri.js spotify-this song`)
-    * ![Spotify](./images/spotify.png)
+    * ![Spotify](/images/spotify.png)
 * You can search for movies by using command `movie-this` followed by the movie name. EXAMPLE(`node liri.js movie-this song`)
-    * ![Movies](./images/movie.png)
+    * ![Movies](/images/movie.png)
 * You can search for an artists next upcoming concert by using command `concert-this` followed by the artist name. EXAMPLE(`node liri.js concert-this artist`)
-    * ![Concert](./images/concert.png)
+    * ![Concert](/images/concert.png)
 * You can also get a random result by typing `do-what-it-says-` EXAMPLE(`node liri.js do-what-it-says`)
 
 ## How do I work?
